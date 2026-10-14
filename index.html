@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Cuaderno interactivo · Laboratorio de Física I · Lanzamiento parabólico</title>
+<meta name="description" content="Cuaderno interactivo de laboratorio para la práctica de lanzamiento parabólico: lanzador de proyectiles, compuerta óptica y sensor de impacto, cinco ángulos de disparo, determinación de la rapidez inicial y de la gravedad, alcance frente al ángulo y simulador de la parábola. Universidad Tecnológica de Pereira, Facultad de Ciencias Básicas.">
+<meta name="theme-color" content="#0C2B52">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<!-- ===================================================== Barra superior -->
+<header class="barra">
+  <div class="barra__fila">
+    <button class="btn" id="btn-indice" aria-expanded="false" aria-controls="cajon" title="Abrir el índice">
+      <svg class="btn__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/>
+      </svg>
+      <span>Índice</span>
+    </button>
+
+    <div class="barra__marca">
+      <span class="barra__sigla">UTP</span>
+      <span class="barra__sub">Laboratorio de Física I · Práctica 7 · Lanzamiento parabólico</span>
+    </div>
+
+    <div class="barra__acciones">
+      <button class="btn btn--clave" id="btn-auto" title="Completar todos los campos de todas las tablas del cuaderno">
+        <svg class="btn__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" stroke-linejoin="round"/>
+        </svg>
+        <span>Autocompletar todo</span>
+      </button>
+      <button class="btn" id="btn-verificar" title="Contrastar tus respuestas con la referencia">
+        <svg class="btn__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="m4 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Verificar</span>
+      </button>
+      <button class="btn" id="btn-imprimir" title="Imprimir o exportar a PDF">
+        <svg class="btn__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M6 9V3h12v6M6 18H4v-6h16v6h-2M8 14h8v7H8z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Imprimir</span>
+      </button>
+      <button class="btn" id="btn-reiniciar" title="Borrar todas las respuestas guardadas">
+        <svg class="btn__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Reiniciar</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Regla graduada: el nonio se desliza sobre la escala de páginas -->
+  <div class="regla">
+    <div class="regla__pista" role="progressbar" aria-label="Avance en el cuaderno">
+      <div class="regla__marcas" id="regla-marcas" aria-hidden="true"></div>
+      <div class="regla__nonio" id="regla-nonio" style="left:2%"></div>
+    </div>
+    <span class="regla__lectura" id="regla-lectura">01 / 20</span>
+  </div>
+</header>
+
+<!-- ========================================================= Índice lateral -->
+<nav class="cajon" id="cajon" data-abierto="false" aria-label="Índice de secciones">
+  <div class="cajon__cab">
+    <h2 class="cajon__titulo">Índice</h2>
+    <button class="btn" id="btn-cerrar-cajon" aria-label="Cerrar el índice">✕</button>
+  </div>
+  <ul class="cajon__lista" id="cajon-lista"></ul>
+</nav>
+<div class="velo" id="velo" data-abierto="false"></div>
+
+<!-- ================================================================ Libro -->
+<main class="libro" id="libro"></main>
+
+<!-- ==================================================== Navegación inferior -->
+<nav class="nav-pie" aria-label="Navegación entre páginas">
+  <div class="nav-pie__fila">
+    <button class="btn" id="btn-ant" title="Página anterior">← <span>Anterior</span></button>
+    <button class="btn" id="btn-inicio" title="Volver a la portada">⌂</button>
+    <span class="nav-pie__centro" id="nav-centro">Portada</span>
+    <button class="btn" id="btn-sig" title="Página siguiente"><span>Siguiente</span> →</button>
+  </div>
+</nav>
+
+<!-- ================================================================ Modal -->
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-tit">
+  <div class="modal__caja">
+    <h2 class="modal__tit" id="modal-tit"></h2>
+    <p id="modal-txt"></p>
+    <div class="modal__acc">
+      <button class="btn-papel btn-papel--fantasma" id="modal-no">Cancelar</button>
+      <button class="btn-papel btn-papel--clave" id="modal-ok">Continuar</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" data-visible="false"></div>
+
+<script src="js/datos.js"></script>
+<script src="js/paginas.js"></script>
+<script src="js/instrumentos.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

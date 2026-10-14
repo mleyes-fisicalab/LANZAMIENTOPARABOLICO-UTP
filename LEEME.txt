@@ -1,0 +1,285 @@
+===============================================================================
+CUADERNO INTERACTIVO DE LABORATORIO
+Universidad Tecnológica de Pereira · Facultad de Ciencias Básicas
+Departamento de Física · Laboratorio de Física I
+Práctica 7 · Lanzamiento parabólico
+===============================================================================
+
+CÓMO SE ABRE
+-------------------------------------------------------------------------------
+Haz doble clic en «index.html». Se abre en cualquier navegador moderno
+(Chrome, Edge, Firefox, Safari), sin instalar nada y sin servidor.
+
+Mantén la carpeta completa: el cuaderno necesita las subcarpetas css, js e
+imagenesUTP que están a su lado. Si mueves solo el index.html, se verá sin
+estilos, sin portada y sin la figura del montaje.
+
+Con conexión a internet las tipografías se cargan desde Google Fonts. Sin
+conexión el cuaderno funciona igual: el navegador sustituye las tipografías por
+las del sistema y nada más cambia.
+
+
+ESTRUCTURA DE LA CARPETA
+-------------------------------------------------------------------------------
+index.html .................. estructura, barra superior y navegación
+css/estilos.css ............. toda la apariencia, incluida la hoja de impresión
+js/datos.js ................. contenido académico: textos, glosario, datos de
+                              referencia y constantes de la práctica
+js/paginas.js ............... construcción de las 20 páginas y registro de los
+                              campos con sus respuestas
+js/instrumentos.js .......... esquema de la trayectoria, montaje interactivo,
+                              simulador de tiro parabólico y la cadena de cálculo
+js/app.js ................... navegación, guardado, autocompletado, verificación
+imagenesUTP/ ................ portada, rosa de los vientos y la figura del montaje
+LEEME.txt ................... este archivo
+
+
+LAS 20 SECCIONES
+-------------------------------------------------------------------------------
+00  Portada                            10  Preinforme · Predicciones
+01  Índice                             11  Tabla 1 · Registro de lanzamientos
+02  Presentación de la práctica        12  Tabla 2 · Análisis
+03  Objetivos                          13  El alcance frente al ángulo
+04  Materiales e instrumentos          14  La rapidez inicial y la gravedad
+05  Fundamento físico                  15  Simulador de lanzamiento
+06  Montaje experimental               16  Preguntas
+07  Procedimiento                      17  Conclusiones
+08  Encabezado del informe             18  Glosario
+09  Marco teórico                      19  Referencias
+
+
+LOS BOTONES DE LA BARRA SUPERIOR
+-------------------------------------------------------------------------------
+Índice ............. abre el cajón lateral con las 20 secciones.
+Autocompletar todo . rellena de una vez TODOS los campos de TODAS las tablas y
+                     de todas las páginas del cuaderno con el conjunto de datos
+                     de referencia. Pide confirmación antes de sobrescribir.
+Verificar .......... contrasta con la referencia lo que haya escrito y marca en
+                     verde o en rojo, con una nota explicativa bajo cada campo.
+Imprimir ........... genera el PDF de entrega con las 20 páginas seguidas.
+Reiniciar .......... borra todo lo escrito en este navegador.
+
+Cada página de trabajo repite esas acciones en pequeño, limitadas a esa página:
+«Autocompletar esta página», «Verificar» y «Limpiar».
+
+También se puede navegar con las flechas ← y → del teclado.
+
+
+QUÉ SE VERIFICA Y QUÉ NO
+-------------------------------------------------------------------------------
+El grupo mide su propio lanzador, su propia altura de compuerta y sus propios
+alcances, de modo que las casillas de la Tabla 1 no tienen una respuesta
+correcta: son datos suyos. El cuaderno distingue por eso tres clases de campo.
+
+1. DATOS DEL ESTUDIANTE (las alturas y₀ y los alcances y tiempos de vuelo)
+   No se verifican. El botón «Autocompletar» sí los rellena, con el conjunto de
+   datos de referencia que se describe más abajo, para que el docente pueda
+   proyectar un ejemplo completo o para que el estudiante compruebe cómo debería
+   comportarse el cuaderno.
+
+2. RESPUESTAS CON VALOR CORRECTO (las cinco del preinforme)
+   Son los únicos campos que «Verificar» califica. Admiten coma o punto decimal
+   y tienen tolerancia. Con v₀ = 2,35 m/s, θ = 30°, y₀ = 0,220 m y g = 9,80 m/s²
+   recorren la cadena entera de la práctica:
+     1. Componente horizontal v₀·cos θ ................ 2,035 m/s  (± 0,02)
+     2. Componente vertical v₀·sen θ .................. 1,175 m/s  (± 0,02)
+     3. Tiempo de vuelo hasta la mesa ................. 0,3634 s   (± 0,006)
+     4. Alcance horizontal ............................ 0,7395 m   (± 0,012)
+     5. Cuánto sube sobre el punto de lanzamiento ..... 0,0704 m   (± 0,003)
+   Al verificar, cada campo muestra debajo la nota con el procedimiento, acierte
+   o no. La tercera es la que más se falla: quien olvida la altura inicial y
+   resuelve t = 2·v₀·senθ/g obtiene 0,2398 s en lugar de 0,3634 s.
+
+3. CAMPOS PERSONALES (docente, grupo, estudiantes, códigos y la casilla NOTA)
+   Nunca se autocompletan ni se verifican. La casilla NOTA reproduce la del
+   formato impreso del informe y queda reservada al docente.
+
+Los textos largos —resumen, marco teórico, las cuatro preguntas y las tres
+conclusiones— no se califican: el autocompletado carga un texto modelo que
+muestra la profundidad y la estructura esperadas, no para copiarlo.
+
+
+EL CONJUNTO DE DATOS DE REFERENCIA
+-------------------------------------------------------------------------------
+El botón «Autocompletar» no sortea números al azar: carga siempre el mismo
+conjunto de datos, de modo que el docente que lo proyecta en clase y el
+estudiante que lo abre en su casa obtienen exactamente los mismos resultados.
+
+Se construye a partir de un lanzador verosímil en el rango corto, que entrega
+una rapidez de salida de 2,35 m/s, y de g = 9,776 m/s², el valor local estimado
+para Pereira. La altura y₀ de la compuerta no es la misma en los cinco ángulos:
+el cañón pivota, así que al inclinarlo más la boca sube. Se modela como
+y₀ = 0,165 + 0,110·sen θ, que da 0,193 · 0,203 · 0,211 · 0,220 · 0,228 m para
+los cinco ángulos de la Tabla 1. Con eso se resuelve el tiempo de vuelo y de ahí
+el alcance, y a cada una de las quince lecturas se le aplica una desviación fija
+de alrededor del medio por ciento, escrita una a una en js/datos.js (constantes
+DESV_X y DESV_T).
+
+Con esos datos el cuaderno recupera:
+
+    rapidez inicial v₀ (promedio de los 5 ángulos) ..... 2,351 m/s
+    dispersión de v₀ entre ángulos ..................... 0,34 %
+    gravedad g (promedio de los 5 ángulos) ............. 9,780 m/s²
+    dispersión de g entre ángulos ...................... 0,41 %
+    error de g frente a 9,80 m/s² ...................... 0,21 %
+    error de g frente a 9,776 m/s² (valor local) ....... 0,04 %
+    mayor alcance medido ............................... 0,7597 m, a 35°
+    mayor altura sobre la mesa ......................... 0,3211 m, a 35°
+    ángulo óptimo que predice la teoría ................ 36,8°
+
+Dos cosas conviene mirar en ese resultado. La primera es que v₀ sale igual en
+los cinco ángulos: eso es exactamente lo que debe ocurrir, porque la rapidez de
+salida la fija el rango del resorte y no la inclinación del cañón, y es la
+comprobación interna de que las medidas de alcance y de tiempo son consistentes.
+La segunda es que el ángulo de mayor alcance medido, 35°, es solo el mayor de
+los cinco que se ensayan, no el óptimo real: con y₀ > 0 el óptimo baja por
+debajo de 45° y aquí queda en 36,8°, fuera del intervalo de la tabla. El
+cuaderno lo advierte, porque es justamente lo que pregunta el punto 2 del
+informe.
+
+
+CÓMO CALCULA EL CUADERNO
+-------------------------------------------------------------------------------
+Promedios
+    x̄ = (x₁ + x₂ + x₃)/3 y t̄_V = (t₁ + t₂ + t₃)/3 para cada ángulo. El cuadro
+    bajo cada tabla muestra el cálculo paso a paso.
+
+Rapidez inicial
+    v₀ = x̄ / (cos θ · t̄_V). Sale únicamente del movimiento horizontal, que es
+    uniforme, y no interviene la gravedad. Ese orden importa: si se supusiera un
+    valor de g para hallar v₀, calcular g después no demostraría nada.
+
+Gravedad
+    De ½·g·t_V² − v₀·sen θ·t_V − y₀ = 0, despejando:
+    g = 2·(v₀·sen θ·t̄_V + y₀) / t̄_V². Se calcula ángulo por ángulo y se promedia.
+
+Altura máxima
+    y = y₀ + (v₀·sen θ)²/(2g), es decir, medida desde la mesa. El cuadro bajo
+    cada ángulo de la Tabla 1 muestra por separado lo que el proyectil sube
+    sobre el punto de lanzamiento y la altura total, por si el docente prefiere
+    la otra convención (véase el punto 2 del apartado siguiente).
+
+Error relativo
+    E_r = |g_exp − g| / g × 100, con el valor de referencia que se escriba en la
+    casilla de la página 14. Viene con 9,80 m/s², el del curso, y puede
+    cambiarse por 9,776 m/s² para ver cómo baja el error.
+
+Ángulo óptimo
+    El cuaderno barre los ángulos de 1° a 89° con la v₀ y la y₀ del grupo y
+    marca dónde está el máximo del alcance, tanto en la gráfica de la página 13
+    como en el simulador de la página 15.
+
+Toda la cadena se recalcula sola: basta corregir un alcance o un tiempo en la
+Tabla 1 para que los promedios, la Tabla 2, la gráfica, los resultados y el
+error se actualicen.
+
+
+GUARDADO
+-------------------------------------------------------------------------------
+El cuaderno guarda lo escrito en el almacenamiento local del navegador, cada vez
+que se escribe. Eso significa que:
+
+  · se recupera al volver a abrir el archivo en el mismo navegador y equipo;
+  · NO viaja con el archivo: si se copia la carpeta a otro computador, el
+    cuaderno llega en blanco;
+  · el modo incógnito y el borrado de datos de navegación lo eliminan.
+
+Para entregar, usa «Imprimir» y guarda como PDF. Al imprimir, el cuaderno
+despliega el glosario completo y expande las respuestas largas, de modo que en
+el PDF aparece todo el texto escrito y no solo la parte visible en pantalla.
+
+
+ACCESIBILIDAD
+-------------------------------------------------------------------------------
+  · Navegación completa por teclado, incluidos los ocho puntos sensibles del
+    montaje (Tab para llegar, Enter o espacio para activar).
+  · Cada campo tiene su etiqueta para lectores de pantalla.
+  · Los avisos se anuncian mediante regiones «live».
+  · Si el sistema tiene activada la reducción de movimiento, el proyectil del
+    simulador no se anima: muestra directamente la trayectoria completa y el
+    punto de impacto.
+
+
+SOBRE EL DOCUMENTO DE PARTIDA
+-------------------------------------------------------------------------------
+El cuaderno se construyó sobre el «Informe 5 · Movimiento parabólico» del
+Departamento de Física. Conviene dejar constancia de lo que se encontró en él.
+
+1. LA TABLA 2 NO TIENE COLUMNA PARA LA GRAVEDAD. El tercer objetivo de la
+   práctica es «calcular el valor de la gravedad a partir del estudio del
+   movimiento parabólico», pero las columnas de la Tabla 2 son θ, y₀, x̄, t̄_V,
+   v₀ e y: no hay dónde anotar g, y el apartado de análisis tampoco lo pide en
+   ninguno de sus tres puntos. El cuaderno añade esa columna y lo señala en la
+   propia página. Si se prefiere la tabla tal cual aparece en el informe, basta
+   con no transcribir esa columna: las demás son exactamente las del formato.
+
+2. «ALTURA MÁXIMA y» ES AMBIGUA. El punto 3 del análisis pide «la altura máxima
+   y alcanzada por el proyectil» sin decir desde dónde se mide, y caben dos
+   lecturas que difieren en y₀: lo que el proyectil sube por encima del punto de
+   lanzamiento, (v₀·senθ)²/2g, o la altura sobre la mesa, y₀ + (v₀·senθ)²/2g.
+   El cuaderno adopta la segunda —es la que da sentido a comparar el resultado
+   con la altura de la compuerta— y muestra las dos cifras por separado bajo
+   cada ángulo de la Tabla 1, de modo que la otra convención queda a la vista.
+
+3. ESE MISMO PUNTO 3 PIDE LA ALTURA «EN CADA LANZAMIENTO», pero la Tabla 2
+   tiene una sola fila por ángulo y se llena con promedios, no con lanzamientos
+   individuales. El cuaderno calcula una altura por ángulo, a partir de los
+   promedios, que es lo que la tabla admite.
+
+4. LOS RANGOS DE REPETICIÓN DEL PROCEDIMIENTO NO CUADRAN. El paso 17 dice
+   «repita los pasos 4 al 12» y el paso 18, «repita los pasos 4 al 13». Ambos
+   rangos empiezan en el paso 4, que es el que fija el ángulo en 15°, de manera
+   que repetir desde ahí volvería a poner el mismo ángulo en los cinco casos; y
+   ambos terminan antes del paso 14, que es el disparo, y de los pasos 15 y 16,
+   que son los que anotan el tiempo y el alcance: tal como está escrito, ninguna
+   de las dos repeticiones llega a tomar una medida. El cuaderno reorganiza los
+   dieciocho pasos en doce bloques consecutivos en los que el ciclo de
+   repetición queda explícito: cargar, disparar, anotar el tiempo, medir el
+   alcance, repetir tres veces, cambiar de ángulo.
+
+5. SUBÍNDICES ESCRITOS COMO SUPERÍNDICES. En todo el documento la altura inicial
+   y la rapidez inicial aparecen como y⁰ y v⁰, con el cero voladito, cuando se
+   trata de subíndices. El cuaderno escribe y₀ y v₀.
+
+6. LA TABLA 1 NO DICE CUÁNTOS LANZAMIENTOS SE HACEN POR ÁNGULO. El paso 17 pide
+   «varias mediciones» sin fijar el número, aunque la tabla reserva tres
+   casillas de alcance y tres de tiempo por ángulo. El cuaderno fija tres, que
+   es lo que la propia tabla admite, y lo dice al principio de la página.
+
+7. LA FIGURA. La imagen del montaje es la del propio documento, extraída sin
+   retocar y solo reescalada. Se emplea como Figura 1 en la página del montaje,
+   junto a un esquema interactivo propio.
+
+8. LA PORTADA. Se reescribió sobre la portada de otra práctica, reconstruyendo
+   el papel y la retícula que había bajo el texto anterior, de modo que se
+   conservan el logotipo, la filigrana de la rosa de los vientos y el resto del
+   diseño. La ilustración sigue siendo la de un espectrómetro de masas, que
+   pertenece a electromagnetismo y no a mecánica: si en algún momento se dispone
+   de una ilustración adecuada, basta sustituir el archivo
+   imagenesUTP/portada.png por otro del mismo tamaño.
+
+
+COMPROBACIONES REALIZADAS
+-------------------------------------------------------------------------------
+Antes de la entrega se ejecutó un banco de 120 comprobaciones automáticas sobre
+el cuaderno cargado en un navegador simulado. Se verificaron, entre otras cosas:
+
+  · que las 20 páginas se construyen, con encabezado, pie e índice completos;
+  · que los 67 campos tienen identificador único y están registrados;
+  · que «Autocompletar todo» completa los cinco ángulos de la Tabla 1 y, en una
+    segunda pasada, las casillas derivadas que dependen de ellos;
+  · que los campos personales y la casilla NOTA quedan siempre en blanco;
+  · que las cinco claves del preinforme coinciden con el cálculo físico;
+  · que la cadena de cálculo cumple, ángulo por ángulo, v₀ = x̄/(cos θ·t̄_V),
+    g = 2(v₀·senθ·t̄_V + y₀)/t̄_V² e y = y₀ + (v₀·senθ)²/2g;
+  · que el tiempo de vuelo crece con el ángulo en los cinco casos;
+  · que el conjunto de referencia devuelve v₀ = 2,351 m/s y g = 9,780 m/s², a
+    menos del 1 % de los valores con los que se generaron los datos, y que las
+    cinco rapideces iniciales coinciden entre sí dentro del 2 %;
+  · que al poner y₀ = 0 en el simulador el ángulo óptimo vuelve a ser 45°;
+  · que la Tabla 2 se llena sola y sin casillas vacías, con su columna de g;
+  · que el esquema de la trayectoria, el montaje con sus ocho puntos sensibles,
+    el simulador, el glosario, la navegación, el guardado, la verificación y la
+    impresión funcionan.
+
+===============================================================================
